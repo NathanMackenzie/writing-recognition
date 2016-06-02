@@ -1,11 +1,9 @@
-QT += core
-QT -= gui
+TEMPLATE += app
+QT += gui declarative
 
-TARGET = writing-recognition
-CONFIG += console
-CONFIG -= app_bundle
+SOURCES += main.cpp \
+    Board.cpp
 
-TEMPLATE = app
-
-SOURCES += main.cpp
+HEADERS += \
+    Board.h
 
