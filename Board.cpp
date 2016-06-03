@@ -5,11 +5,40 @@ Board::Board()
 {
    setSceneRect(0, 0, 400, 400);
    resetInput();
+
+   // Define network topology
+   vector<unsigned> topology;
+   topology.push_back(400);
+   topology.push_back(300);
+   topology.push_back(200);
+   topology.push_back(100);
+   topology.push_back(10);
+   ai.initializeNetwork(topology);
+
+   // Initialize trainingset
+   for(int i = 0; i < 10; ++i){
+       vector< vector<int> > vector_set;
+       trainingSet[i] = vector_set;
+   }
 }
 
 void Board::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
     render();
+    /*
+    string ans;
+    cout << "Would you like to save this in trainset?" << endl;
+    cin >> ans;
+    if(ans.compare("y")){
+        int val;
+        cout << "what is the correct value?" << endl;
+        cin >> val;
+        vector<int> v(aiInput, aiInput + 400);
+        trainingSet[val].push_back(v);
+    }
+    */
+    //ai.feedForward(aiInput);
+    //ai.backPropagate(correct, 0.7, 0.3);
 }
 
 void Board::mouseMoveEvent(QGraphicsSceneMouseEvent *event)

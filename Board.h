@@ -6,6 +6,9 @@
 #include <QMouseEvent>
 #include <QGraphicsSceneMouseEvent>
 #include <vector>
+#include <map>
+
+#include "Network.h"
 
 using namespace std;
 class Board: public QGraphicsScene{
@@ -17,8 +20,10 @@ protected:
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
 
 private:
+    map<int, vector< vector<int> > > trainingSet;
     int aiInput [400];
     vector<QGraphicsRectItem *> stroke;
+    Network ai;
     void render();
     void resetInput();
 };
