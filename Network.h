@@ -13,8 +13,9 @@ public:
     Network(const vector<unsigned> &topology);
     void initializeNetwork(const vector<unsigned> &topology);
     void analyze();
-    void feedForward(int args[400]);
+    void feedForward(vector<int>& input);
     void backPropagate(vector<double> ideals, double learnRate, double momentum);
+    vector<double> getOutput();
 private:
     void calculateGradients();
     double e = 2.71828182845904523536;

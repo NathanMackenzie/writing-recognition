@@ -12,11 +12,11 @@ Network::Network(const vector<unsigned> &topology) {
     }
 }
 
-void Network::feedForward(int args[400]) {
+void Network::feedForward(vector<int>& input) {
 
     // Set input layer
-    for (int i = 1; i < 400; ++i) {
-        network[0][i].sum = args[i-1];
+    for (int i = 1; i < input.size(); ++i) {
+        network[0][i].sum = input[i-1];
     }
 
     // Calculate sum for all remaining layers
@@ -28,10 +28,6 @@ void Network::feedForward(int args[400]) {
             }
             network[l][i].sum = sum;
         }
-    }
-
-    for(int i = 1; i <= 10; ++i){
-        //cout << network[4][i].sum << endl;
     }
 }
 
@@ -56,7 +52,7 @@ void Network::calculateDeltas(vector<double> ideals) {
     // Calculate output errors
     for (int i = 1; i < network[network.size() - 1].size(); ++i) {
         double error;
-        error = network[network.size() - 1][i].sum - ideals[i - 1];
+        error = network[network.size() - 1][i].output() - ideals[i - 1];
         errors.push_back(error);
     }
 
@@ -122,4 +118,13 @@ void Network::initializeNetwork(const vector<unsigned> &topology)
         }
         network.push_back(lay);
     }
+}
+
+vector<double> Network::getOutput(){
+    vector<double> output;
+    for(int i = 1; i < network[network.size()-1].size(); ++i){
+        output.push_back(network[network.size()-1][i].output());
+    }
+    
+    return output;
 }

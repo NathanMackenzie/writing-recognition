@@ -23,7 +23,7 @@ public:
     vector<connection> connections;
     double sum;
     double delta;
-
+    
     Neuron(unsigned layer, unsigned index, const vector<unsigned> &topology);
     void analyze() const;
     double output() const;
