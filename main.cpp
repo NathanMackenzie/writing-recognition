@@ -2,6 +2,10 @@
 #include "TrackPadComponent.h"
 #include "MainComponent.h"
 
+/**
+ * WritingRecognitionApplication is the entry point for the application. Handles the initialization of the JUCE GUI compnents.
+ *
+ */
 class WritingRecognitionApplication  : public JUCEApplication
 {
 public:
